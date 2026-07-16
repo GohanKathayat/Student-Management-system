@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Student Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page" onload="checkAdmin(); loadStudents();">
+  <div class="dashboard">
+    <aside class="sidebar" aria-label="Admin navigation">
+      <a class="brand" href="admin.html" aria-label="Student management home">
+        <span class="brand-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+        <span>Student<span>Hub</span></span>
+      </a>
+      <div class="sidebar-user"><span class="avatar" id="adminSidebarAvatar">A</span><div><strong>Administrator</strong><small>Management portal</small></div></div>
+      <p class="nav-label">Workspace</p>
+      <nav><a class="nav-item active" href="#overview"><i class="fa-solid fa-grid-2"></i> Overview</a><a class="nav-item" href="#student-records"><i class="fa-solid fa-user-graduate"></i> Students</a></nav>
+      <button class="logout-btn" type="button" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</button>
+    </aside>
+    <main class="main">
+      <header class="topbar" id="overview"><div><p class="eyebrow">Admin workspace</p><h1>Student management</h1><p class="topbar-copy">Add, update, and organize your student records in one place.</p></div><label class="profile admin-profile" for="adminPhoto" title="Change administrator photo" aria-label="Change administrator photo"><i class="fa-solid fa-camera"></i></label><input type="file" id="adminPhoto" accept="image/png,image/jpeg,image/webp" hidden></header>
+      <section class="cards" aria-label="Dashboard summary">
+        <article class="card stat-card"><span class="card-icon blue"><i class="fa-solid fa-users"></i></span><div><p>Total students</p><h3 id="totalStudents">0</h3><small>Registered in your directory</small></div></article>
+        <article class="card stat-card"><span class="card-icon violet"><i class="fa-solid fa-pen-to-square"></i></span><div><p>Record access</p><h3>Full</h3><small>Create, update, and delete</small></div></article>
+      </section>
+      <section class="student-form panel" aria-labelledby="student-form-title"><div class="section-heading"><div><p class="eyebrow">New record</p><h2 id="student-form-title">Add a student</h2></div><span class="section-badge"><i class="fa-solid fa-circle-info"></i> All fields required</span></div>
+        <form id="studentForm">
+          <input type="hidden" id="studentId">
+          <div class="form-grid">
+            <div class="field"><label for="name">Full name</label><input type="text" id="name" placeholder="e.g. Anisha Sharma" required></div>
+            <div class="field"><label for="address">Address</label><input type="text" id="address" placeholder="e.g. Kathmandu" required></div>
+            <div class="field"><label for="contact">Contact number</label><input type="tel" id="contact" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit mobile number" required></div>
+            <div class="field"><label for="studentEmail">Email address</label><input type="email" id="studentEmail" placeholder="student@example.com" required></div>
+            <div class="field"><label for="roll">Roll number</label><input type="text" id="roll" placeholder="e.g. BCA-024" required></div>
+            <div class="field"><label for="faculty">Faculty</label><input type="text" id="faculty" placeholder="e.g. Computer Science" required></div>
+            <div class="field photo-field"><label for="photo">Student photo <span>(optional)</span></label><div class="photo-upload drop-zone" id="photoDropZone" tabindex="0" role="button" aria-label="Upload student photo by clicking or dragging a file"><img id="photoPreview" class="photo-preview" alt="Student photo preview"><div class="drop-zone-copy"><i class="fa-solid fa-cloud-arrow-up"></i><strong>Drop photo here</strong><span>or click to browse</span></div><input type="file" id="photo" accept="image/png,image/jpeg,image/webp" hidden><small>JPG, PNG, or WebP — max 1 MB</small></div></div>
+          </div>
+          <div class="form-actions"><p id="formStatus" class="form-message" aria-live="polite"></p><button class="login-btn" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save student</button></div>
+        </form>
+      </section>
+      <section class="table-box panel" id="student-records" aria-labelledby="student-records-title"><div class="table-header"><div><p class="eyebrow">Directory</p><h2 id="student-records-title">Student records</h2></div><label class="search-box" for="search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" id="search" placeholder="Search by any detail..." onkeyup="searchStudent()"></label></div><div class="table-scroll"><table><thead><tr><th>SN</th><th>Photo</th><th>Name</th><th>Address</th><th>Contact</th><th>Email</th><th>Roll</th><th>Faculty</th><th><span class="sr-only">Actions</span>Action</th></tr></thead><tbody id="studentTable"></tbody></table></div></section>
+    </main>
+  </div>
+  <script src="js/auth.js"></script><script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management System | Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="right-panel">
+      <form id="signupForm">
+        <h2>Create account</h2>
+        <p>Set up your student management account.</p>
+        <div class="input-box"><i class="fas fa-user"></i><input type="text" id="username" placeholder="Full name" required></div>
+        <div class="input-box"><i class="fas fa-envelope"></i><input type="email" id="email" placeholder="Email" required></div>
+        <div class="input-box"><i class="fas fa-lock"></i><input type="password" id="password" placeholder="Password" required></div>
+        <div class="input-box"><i class="fas fa-lock"></i><input type="password" id="confirmPassword" placeholder="Confirm password" required></div>
+        <div class="role-box"><label for="role">Select role</label><select id="role"><option value="user">User</option><option value="admin">Admin</option></select></div>
+        <button class="login-btn" type="submit">Register</button>
+        <div class="signup-text">Already have an account? <a href="index.html">Log in</a></div>
+      </form>
+    </div>
+  </div>
+  <script src="js/auth.js"></script>
+</body>
+</html>
